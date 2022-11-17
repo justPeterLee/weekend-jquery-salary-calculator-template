@@ -53,15 +53,20 @@ function getInputs(){
 
     // checks if all input forms are valid
     if(validateForm(inputs)){
-        console.log('sending data');
+        console.log(inputs);
+        // call render
+        render(inputs)
+        // call calcMonthly
     }
     else{
-        alert('inputs not good')
+        alert('inputs not valid')
     }
 
     $('.employee-input').val('')
 }
 
+
+// validate function
 function validateForm(obj){
     let objValues = Object.values(obj)
     for(values of objValues){
@@ -73,8 +78,27 @@ function validateForm(obj){
     return true;
 }
 
-function render(){
 
+// render function
+function render(employeeData){
+    // create row element
+    //append to employee table
+
+    $(`
+        <tr class="employee-data">
+            <td class="td-employee" id="td-fname">${employeeData.fname}</td>
+            <td class="td-employee" id="td-lname">${employeeData.lname}</td>
+            <td class="td-employee" id="td-id">${employeeData.employID}</td>
+            <td class="td-employee" id="td-job">${employeeData.jobTitle}</td>
+            <td class="td-employee" id="td-salary">${employeeData.salary}</td>
+        </tr>
+    `).appendTo($('#employee-table'))
 }
 
-function calcMonthly(){}
+
+// calcMonthly function
+function calcMonthly(){
+    // logic
+    // salary/12 + other salaries/12
+    // update monthly total
+}

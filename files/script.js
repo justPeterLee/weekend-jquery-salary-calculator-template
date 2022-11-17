@@ -29,7 +29,9 @@ function onReady(){
     $('#submit-btn').on('click', getInputs);
 }
 
+// employees added to the rendered table
 let employeeData = [];
+
 function getInputs(){
     // prevents page from reloading
     event.preventDefault();
@@ -43,7 +45,11 @@ function getInputs(){
     let jobTitle = $("#job").val();     // index 3
     let salary = $("#salary").val();    // index 4
     
-    inputs.push(fname, lname, employID, jobTitle, salary);  //[fname, lname, employID, jonTitle, salary]
+    inputs.fname = fname;
+    inputs.lname = lname;
+    inputs.employID = employID;
+    inputs.jobTitle = jobTitle;
+    inputs.salary = salary;
 
     // checks if all input forms are valid
     if(validateForm(inputs)){
@@ -56,8 +62,9 @@ function getInputs(){
     $('.employee-input').val('')
 }
 
-function validateForm(array){
-    for(values of array){
+function validateForm(obj){
+    let objValues = Object.values(obj)
+    for(values of objValues){
         if(values.replace(/\s/g, "") === ''){
             return false;
         }

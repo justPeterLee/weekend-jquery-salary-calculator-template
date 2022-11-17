@@ -12,8 +12,36 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello, World</h1>
+    <h1>Salary Calculator</h1>
 
-    
+    <form id="employee-form">
+        <label for="fname">First name: </label>
+        <input class="employee-input" id="fname" type="text" required>
+
+        <label for="lname">Last name: </label>
+        <input class="employee-input" id="lname" type="text" required>
+
+        <lable for="ID">ID#: </lable>
+        <input class="employee-input" id="ID" type="number" required>
+
+        <label for="job-title">Job title: </label>
+        <input class="employee-input" id="job" type="text" required>
+
+        <lable for="salary">Salary: </lable>
+        <input class="employee-input" id="salary" type="number" required>
+
+        <input type="submit" id="submit-btn"/>
+    </form>
+
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID#</th>
+            <th>Job Title</th>
+            <th>Salary</th>
+        </tr>
+    </table>
+
 </body>
 </html>

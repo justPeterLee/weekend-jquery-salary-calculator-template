@@ -6,7 +6,10 @@ th{
     width: 100vw;
     height: 2rem;
 }
-
+.employee-data:hover{
+    background-color: grey;
+    cursor: pointer;
+}
 .inTheRed{
     color: red;
 }

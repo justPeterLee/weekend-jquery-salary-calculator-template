@@ -27,6 +27,7 @@ $(onReady);
 function onReady(){
     console.log('hello world');
     $('#submit-btn').on('click', getInputs);
+    $('#employee-table').on('click', '.employee-data', remove);
 }
 
 // employees added to the rendered table
@@ -82,17 +83,17 @@ function validateForm(obj){
 
 
 // render function
-function render(employeeData){
+function render(data){
     // create row element
     //append to employee table
-
+    
     $(`
-        <tr class="employee-data">
-            <td class="td-employee" id="td-fname">${employeeData.fname}</td>
-            <td class="td-employee" id="td-lname">${employeeData.lname}</td>
-            <td class="td-employee" id="td-id">${employeeData.employID}</td>
-            <td class="td-employee" id="td-job">${employeeData.jobTitle}</td>
-            <td class="td-employee" id="td-salary">${employeeData.salary}</td>
+        <tr class="employee-data" data-employeenum=${employeeData.length - 1}>
+            <td class="td-employee" id="td-fname">${data.fname}</td>
+            <td class="td-employee" id="td-lname">${data.lname}</td>
+            <td class="td-employee" id="td-id">${data.employID}</td>
+            <td class="td-employee" id="td-job">${data.jobTitle}</td>
+            <td class="td-employee" id="td-salary">${data.salary}</td>
         </tr>
     `).appendTo($('#employee-table'))
 }
@@ -111,5 +112,12 @@ function calcMonthly(arrObj){
         $('#monthly-total').text(`Monthly Total: ${monthlyTotal}`).removeClass('inTheRed');
         
     }
+}
+
+//remove funtion 
+function remove(){
+    $(this).remove();
+    employeeData.splice($(this).data("employeenum"), 1);
+    calcMonthly(employeeData);
 }
 

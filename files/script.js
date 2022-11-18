@@ -51,12 +51,14 @@ function getInputs(){
     inputs.jobTitle = jobTitle;
     inputs.salary = salary;
 
+    employeeData.push(inputs)
     // checks if all input forms are valid
     if(validateForm(inputs)){
         console.log(inputs);
         // call render
         render(inputs)
         // call calcMonthly
+        calcMonthly(employeeData)
     }
     else{
         alert('inputs not valid')
@@ -97,8 +99,17 @@ function render(employeeData){
 
 
 // calcMonthly function
-function calcMonthly(){
-    // logic
-    // salary/12 + other salaries/12
-    // update monthly total
+function calcMonthly(arrObj){
+    let monthlyTotal = 0;
+    for(let i = 0; i < arrObj.length; i++){
+        monthlyTotal += parseFloat(arrObj[i].salary / 12);
+    }
+    
+    if(monthlyTotal > 20000){
+        $('#monthly-total').text(`Monthly Total: ${monthlyTotal}`).addClass('inTheRed');
+    }else{
+        $('#monthly-total').text(`Monthly Total: ${monthlyTotal}`).removeClass('inTheRed');
+        
+    }
 }
+
